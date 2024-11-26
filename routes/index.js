@@ -3,6 +3,12 @@ var express = require('express');
 var router = express.Router();
 
 router.post('/', async (req, res) => {
+  if (!req.body.message) {
+    return res.status(400).json({
+      message: 'Message is required'
+    });
+  }
+
   var payload = {
     "contents": [
       {
